@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ namespace liftoff_storefront.Controllers
 {
     public class HelloController : Controller
     {
+        [Authorize]
         public IActionResult Index()
         {
             return Content("HELLO WORLD");
