@@ -9,8 +9,8 @@ using liftoff_storefront.Data;
 namespace liftoff_storefront.Migrations
 {
     [DbContext(typeof(StorefrontDbContext))]
-    [Migration("20210131123648_initial-createUserIdentityTables")]
-    partial class initialcreateUserIdentityTables
+    [Migration("20210201155101_InitialProductTable")]
+    partial class InitialProductTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -213,6 +213,26 @@ namespace liftoff_storefront.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("liftoff_storefront.Models.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("ImageURL")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

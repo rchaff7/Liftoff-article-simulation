@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using liftoff_storefront.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace liftoff_storefront.Data
 {
-    public class storefrontDbContext : IdentityDbContext<IdentityUser>
+    public class StorefrontDbContext : IdentityDbContext<IdentityUser>
     {
-        public storefrontDbContext(DbContextOptions<storefrontDbContext> options)
+        public DbSet<Product> Products { get; set; }
+
+
+        public StorefrontDbContext(DbContextOptions<StorefrontDbContext> options)
             : base(options)
         {
         }

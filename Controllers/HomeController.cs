@@ -28,6 +28,13 @@ namespace liftoff_storefront.Controllers
             return View();
         }
 
+        public IActionResult ProductPage()
+        {
+
+        }
+
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
