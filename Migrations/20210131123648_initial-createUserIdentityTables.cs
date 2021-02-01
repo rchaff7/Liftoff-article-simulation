@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace liftoff_storefront.Migrations
 {
-    public partial class initialcreateUserIdentityTables : Migration
+    public partial class InitialcreateUserIdentityTables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -10,7 +10,7 @@ namespace liftoff_storefront.Migrations
 {
     [DbContext(typeof(StorefrontDbContext))]
     [Migration("20210131123648_initial-createUserIdentityTables")]
-    partial class initialcreateUserIdentityTables
+    partial class InitialcreateUserIdentityTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
