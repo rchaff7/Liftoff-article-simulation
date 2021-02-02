@@ -33,9 +33,9 @@ namespace liftoff_storefront.Controllers
         [HttpGet("/product/{id}")]
         public IActionResult ProductPage(int id)
         {
-            Product thing = context.Products.Find(id);
-            ViewBag.des = new HtmlString(thing.Description);
-            return View(thing);
+            Product product = context.Products.Find(id);
+            ViewBag.desc = new HtmlString(product.Description);
+            return View(product);
         }
 
 
