@@ -22,7 +22,8 @@ namespace liftoff_storefront.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            List<Product> products = context.Products.ToList();
+            return View(products);
         }
 
         public IActionResult Privacy()
@@ -38,10 +39,18 @@ namespace liftoff_storefront.Controllers
             return View(product);
         }
 
+        [HttpGet("/product/{id}/comments")]
+        public IActionResult ViewComments(int id)
+        {
+            List<UserComment> comments = context.UserComments
+                .Where(x => x.ProductId == id)
+                .ToList();
+            return View(comments);
+        }
 
-        //public IActionResult ViewComments()
+        //public IActionResult AddComment(int id)
         //{
-        //    return View();
+
         //}
 
 
