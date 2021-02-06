@@ -39,6 +39,12 @@ namespace liftoff_storefront.Controllers
         }
 
 
+        //public IActionResult ViewComments()
+        //{
+        //    return View();
+        //}
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

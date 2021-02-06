@@ -12,6 +12,7 @@ namespace liftoff_storefront.Data
     public class StorefrontDbContext : IdentityDbContext<IdentityUser>
     {
         public DbSet<Product> Products { get; set; }
+        public DbSet<UserComment> UserComments { get; set; }
 
 
         public StorefrontDbContext(DbContextOptions<StorefrontDbContext> options)
