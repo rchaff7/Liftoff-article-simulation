@@ -4,6 +4,7 @@
 // Write your JavaScript code.
 // https://github.com/darkreader/darkreader
 
+
 DarkReader.enable({
     brightness: 100,
     contrast: 90,

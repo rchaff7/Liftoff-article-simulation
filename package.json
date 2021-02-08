@@ -1,0 +1,23 @@
+{
+  "name": "liftoff-storefront",
+  "version": "1.0.0",
+  "description": "Store simulator for randomly generated digital media.\r User accounts can be created which can peruse the generated content, add them to their library, and leave comments/reviews\r to showcase Create/Read/Update/Delete functionality.",
+  "main": "Program.cs",
+  "dependencies": {
+    "darkreader": "^4.9.27"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rchaff7/Liftoff-storefront.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rchaff7/Liftoff-storefront/issues"
+  },
+  "homepage": "https://github.com/rchaff7/Liftoff-storefront#readme"
+}
