@@ -9,6 +9,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
 using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
 
 namespace liftoff_storefront.Controllers
 {
@@ -25,35 +27,6 @@ namespace liftoff_storefront.Controllers
             List<Product> products = context.Products.ToList();
             return View(products);
         }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [HttpGet("/product/{id}")]
-        public IActionResult ProductPage(int id)
-        {
-            Product product = context.Products.Find(id);
-            ViewBag.desc = new HtmlString(product.Description);
-            return View(product);
-        }
-
-        [HttpGet("/product/{id}/comments")]
-        public IActionResult ViewComments(int id)
-        {
-            List<UserComment> comments = context.UserComments
-                .Where(x => x.ProductId == id)
-                .ToList();
-            return View(comments);
-        }
-
-        //public IActionResult AddComment(int id)
-        //{
-
-        //}
-
-
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

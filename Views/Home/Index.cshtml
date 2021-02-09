@@ -12,9 +12,9 @@
 *@
 
 
-@foreach (var p in Model)
-{
-    <p>
-        <a asp-controller="product" asp-action="@p.Id">@p.Name</a>
-    </p>
-}
+<div class="container-fluid">
+    @foreach (var p in Model)
+    {
+        <a asp-controller="product" asp-action="@p.Id"><img class="img-thumbnail img-fluid rounded col-md-4" src="@p.ImageURL" /></a>
+    }
+</div>
