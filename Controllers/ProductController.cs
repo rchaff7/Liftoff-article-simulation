@@ -46,6 +46,7 @@ namespace liftoff_storefront.Controllers
                 .Include(x => x.IdentityUser)
                 .ToList();
             ViewBag.id = id;
+            ViewBag.uid = userManager.GetUserId(User);
             return View(comments);
         }
 

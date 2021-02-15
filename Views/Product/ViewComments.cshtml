@@ -21,6 +21,15 @@ else
         <h6>@item.IdentityUser.NormalizedUserName:</h6>
         <p class="img-thumbnail">
             @Html.DisplayFor(modelItem => item.Content)
+            @if (ViewBag.uid == item.IdentityUserId)
+            {
+            <br />
+            <span>
+                <a asp-controller="UserComments" asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+                | 
+                <a asp-controller="UserComments" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </span>
+            }
         </p>
-    }
+     }
 }

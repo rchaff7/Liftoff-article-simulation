@@ -93,7 +93,7 @@ namespace liftoff_storefront.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return Redirect("/home");
             }
             ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id", userComment.IdentityUserId);
             ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Id", userComment.ProductId);
@@ -128,7 +128,7 @@ namespace liftoff_storefront.Controllers
             var userComment = await _context.UserComments.FindAsync(id);
             _context.UserComments.Remove(userComment);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return Redirect("/home");
         }
 
         private bool UserCommentExists(int id)
