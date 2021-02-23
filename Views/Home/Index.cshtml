@@ -11,10 +11,13 @@
     </div>
 *@
 
-
-<div class="container-fluid">
+<div class="text-center">
+    <a class="btn btn-danger" asp-controller="Product" asp-action="GenerateProduct">SHOW ME WHAT YOU GOT</a>
+</div>
+<br />
+<div class="container-fluid text-center">
     @foreach (var p in Model)
     {
-        <a asp-controller="product" asp-action="@p.Id"><img class="img-thumbnail img-fluid rounded col-md-4" src="@p.ImageURL" /></a>
+        <a asp-controller="product" asp-action="@p.Id"><img class="img-thumbnail img-fluid rounded col-md-3" src="@p.ImageURL" /></a>
     }
 </div>

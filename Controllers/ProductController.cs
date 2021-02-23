@@ -1,4 +1,5 @@
-﻿using liftoff_storefront.Data;
+﻿using DeepAI;
+using liftoff_storefront.Data;
 using liftoff_storefront.Models;
 using liftoff_storefront.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -9,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace liftoff_storefront.Controllers
@@ -17,10 +19,35 @@ namespace liftoff_storefront.Controllers
     {
         private readonly UserManager<IdentityUser> userManager;
         private StorefrontDbContext context;
+        private DeepAI_API api = new DeepAI_API(apiKey: "40185d3f-a067-45aa-8885-58767b613184");
+
         public ProductController(StorefrontDbContext dbcontext, UserManager<IdentityUser> usermanager)
         {
             context = dbcontext;
             userManager = usermanager;
+        }
+
+        [HttpGet("/product")]
+        public IActionResult GenerateProduct()
+        {
+            return View();
+        }
+
+        [HttpPost("/product")]
+        public IActionResult GenerateProduct(Product product)
+        {
+            Product newProduct = new Product(product.Name, null);
+            context.Products.Add(newProduct);
+            context.SaveChanges();
+            newProduct.ImageURL = "/image/" + newProduct.Id + ".jpg";
+            context.Update(newProduct);
+            context.SaveChanges();
+
+            WebClient webClient = new WebClient();
+            StandardApiResponse resp = api.callStandardApi("text2img", new { text = product.Name });
+            webClient.DownloadFile(resp.output_url, "wwwroot/Image/" + newProduct.Id + ".jpg");
+            
+            return Redirect("/product/"+newProduct.Id);
         }
 
         public IActionResult Index()

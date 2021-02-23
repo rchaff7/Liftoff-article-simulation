@@ -18,10 +18,10 @@ namespace liftoff_storefront.Models
         {
         }
 
-        public Product(string name, string imageURL, string description)
+        public Product(string name, string description, string imgURL = null)
         {
             Name = name;
-            ImageURL = imageURL;
+            ImageURL = imgURL;
             Description = description;
         }
     }
