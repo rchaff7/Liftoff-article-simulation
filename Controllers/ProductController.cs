@@ -36,16 +36,18 @@ namespace liftoff_storefront.Controllers
         [HttpPost("/product")]
         public IActionResult GenerateProduct(Product product)
         {
-            Product newProduct = new Product(product.Name, null);
+            WebClient webClient = new WebClient();
+            StandardApiResponse imgResp = api.callStandardApi("text2img", new { text = product.Name });
+            StandardApiResponse descResp = api.callStandardApi("text-generator", new { text = product.Name });
+
+            Product newProduct = new Product(product.Name, descResp.output.ToString());
             context.Products.Add(newProduct);
             context.SaveChanges();
             newProduct.ImageURL = "/image/" + newProduct.Id + ".jpg";
             context.Update(newProduct);
             context.SaveChanges();
-
-            WebClient webClient = new WebClient();
-            StandardApiResponse resp = api.callStandardApi("text2img", new { text = product.Name });
-            webClient.DownloadFile(resp.output_url, "wwwroot/Image/" + newProduct.Id + ".jpg");
+            
+            webClient.DownloadFile(imgResp.output_url, "wwwroot/Image/" + newProduct.Id + ".jpg");
             
             return Redirect("/product/"+newProduct.Id);
         }
